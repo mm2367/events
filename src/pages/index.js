@@ -1,17 +1,34 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import {Inter} from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import {getFeaturedEvents} from "../../dummy-data";
 import EventList from "@/components/events/eventlist";
+import {getFeaturedEvents} from "@/helpers/api-utils";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({subsets: ['latin']})
 
-export default function Home() {
-    const theEvents=getFeaturedEvents();
-  return (
-    <>
-        <EventList items={theEvents}/>
-    </>
-  )
+export default function Home(props) {
+    return (
+        <>
+            <Head>
+                <title>
+                    All Events
+                </title>
+                    <meta name={'NextJs'} content={'Find a lot of great events'}>
+
+                    </meta>
+            </Head>
+                    <EventList items={props.events}/>
+        </>
+    )
+}
+
+export async function getStaticProps() {
+    const featuredEvents = await getFeaturedEvents();
+    return {
+        props: {
+            events: featuredEvents
+        },
+        revalidate: 1800
+    }
 }

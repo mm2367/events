@@ -10,7 +10,7 @@ export default function EventList(props) {
                                title={event.title}
                                location={event.location}
                                date={event.date}
-                               key={index}
+                               key={event.id}
                                image={event.image}>
                     </EventItem>
                 )
