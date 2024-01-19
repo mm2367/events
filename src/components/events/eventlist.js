@@ -4,13 +4,13 @@ export default function EventList(props) {
     const {items} = props;
     return (
         <ul className={styles.list}>
-            {items.map((event, index) => {
+            {items?.map((event, index) => {
                 return (
+                    // eslint-disable-next-line react/jsx-key
                     <EventItem id={event.id}
                                title={event.title}
                                location={event.location}
                                date={event.date}
-                               key={event.id}
                                image={event.image}>
                     </EventItem>
                 )

@@ -5,7 +5,9 @@ import EventContent from "@/components/event-detail/event-content";
 import {getEventById, getAllEvents, getFeaturedEvents} from "@/helpers/api-utils";
 import Head from "next/head";
 import EventList from "@/components/events/eventlist";
+import Comments from "@/components/input/comments";
 export default function EventDetailPage(props){
+    console.log(props.selectedEvent)
     if(!props.selectedEvent){
 
         return <div className={'center'}><p> Loading</p></div>
@@ -30,14 +32,14 @@ export default function EventDetailPage(props){
                     {props.selectedEvent.description}
                 </p>
             </EventContent>
+            <Comments eventId={props.selectedEvent.id}/>
         </>
     )
 }
 
 export async function getStaticProps(context){
     const eventId=context.params.eventId;
-    const event =await getEventById(eventId)
-    console.log(event)
+    const event = await getEventById(eventId)
     return {
         props:{selectedEvent:event
 

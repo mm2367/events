@@ -4,6 +4,7 @@ import {Inter} from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import EventList from "@/components/events/eventlist";
 import {getFeaturedEvents} from "@/helpers/api-utils";
+import NewsletterRegistration from "@/components/input/newsletter-registration";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -18,7 +19,8 @@ export default function Home(props) {
 
                     </meta>
             </Head>
-                    <EventList items={props.events}/>
+            <NewsletterRegistration/>
+            <EventList items={props.events}/>
         </>
     )
 }
