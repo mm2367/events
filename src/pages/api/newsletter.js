@@ -4,9 +4,7 @@ import {connectDatabase, insertDocument} from "@/helpers/db-util";
 
 
 export default async function handler(req, res) {
-    console.log('im in here')
     if(req.method==='POST'){
-        console.log('hello')
      const userEmail=req.body.email;
      if(!userEmail || !userEmail.includes('@')){
        res.status(422).json({message:'Invalid email address'})

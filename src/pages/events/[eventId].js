@@ -7,7 +7,6 @@ import Head from "next/head";
 import EventList from "@/components/events/eventlist";
 import Comments from "@/components/input/comments";
 export default function EventDetailPage(props){
-    console.log(props.selectedEvent)
     if(!props.selectedEvent){
 
         return <div className={'center'}><p> Loading</p></div>

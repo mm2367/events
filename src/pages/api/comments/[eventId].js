@@ -31,7 +31,6 @@ export default async function handler(req, res) {
         let result;
         try{
             result = await insertDocument(client,'comments',newComment)
-            console.log('the result',result);
             newComment._id=result.insertedId
             res.status(201).json({message: 'Added comment'})
 
